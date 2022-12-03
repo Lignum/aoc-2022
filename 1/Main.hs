@@ -1,3 +1,5 @@
+import Data.List
+
 parseInput :: [String] -> [[Int]]
 parseInput lines = go lines []
   where
@@ -7,4 +9,4 @@ parseInput lines = go lines []
 
 main :: IO ()
 main = readFile "input.txt" >>= \input ->
-  print (maximum (sum <$> parseInput (lines input)))
+  print (sum (take 3 (sortBy (flip compare) (sum <$> parseInput (lines input)))))
